@@ -194,32 +194,31 @@ def test_getmd5_path():
     assert getmd5(data=data_file, data_type='file', mode='rU') == '0bec5bf6f93c547bc9c6774acaf85e1a'
 
 
-# def test_json2csv():
-#     """Test json2csv function
-#     creates a json file and tests the md5 sum calculation"""
-#     json_file = create_file("""[ {"User": "Alex", "Country": "US", "Age": "25"} ]""", 'output.json')
-#     output_json = json2csv(json_file, "output_json.csv", header_values=["User", "Country", "Age"])
-#     obs_out = file_2string(output_json)
-#     os.remove(output_json)
-#     assert obs_out == 'User,Country,Age\nAlex,US,25'
-#
-#
-# def test_xml2csv():
-#     """Test xml2csv function
-#     creates a xml file and tests the md5 sum calculation"""
-#     xml_file = create_file("<root>\n<row>\n"
-#                            "<User>Alex</User>\n"
-#                            "<Country>US</Country>\n"
-#                            "<Country>PT</Country>\n"
-#                            "<Age>25</Age>\n</row>\n"
-#                            "<row>\n<User>Ben</User>\n"
-#                            "<Country>US</Country>S\n"
-#                            "<Age>24</Age>\n"
-#                            "</row>\n</root>", 'output.xml')
-#     output_xml = xml2csv(xml_file, "output_xml.csv", header_values=["User", "Country", "Age"])
-#     obs_out = file_2string(output_xml)
-#     os.remove(output_xml)
-#     assert obs_out == "User,Country,Age\nAlex,US,25\nAlex,PT,25\nBen,US,24"
+def test_json2csv():
+    """Test json2csv function
+    creates a json file and tests the md5 sum calculation"""
+    json_file = create_file("""[ {"User": "Alex", "Country": "US", "Age": "25"} ]""", 'output.json')
+    output_json = json2csv(json_file, "output_json.csv", header_values=["User", "Country", "Age"])
+    obs_out = file_2string(output_json)
+    os.remove(output_json)
+    assert obs_out == 'User,Country,Age\nAlex,US,25\n'
+
+
+def test_xml2csv():
+    """Test xml2csv function
+    creates a xml file and tests the md5 sum calculation"""
+    xml_file = create_file("<root>\n<row>\n"
+                           "<User>Alex</User>\n"
+                           "<Country>US</Country>\n"
+                           "<Age>25</Age>\n</row>\n"
+                           "<row>\n<User>Ben</User>\n"
+                           "<Country>US</Country>S\n"
+                           "<Age>24</Age>\n"
+                           "</row>\n</root>", 'output.xml')
+    output_xml = xml2csv(xml_file, "output_xml.csv", header_values=["User", "Country", "Age"])
+    obs_out = file_2string(output_xml)
+    os.remove(output_xml)
+    assert obs_out == "User,Country,Age\nAlex,US,25\nBen,US,24\n"
 
 
 def test_sort_file():
